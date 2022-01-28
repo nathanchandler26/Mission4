@@ -11,13 +11,11 @@ namespace Mission4.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
         private MoviesContext moviesContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, MoviesContext movie)
+        public HomeController(MoviesContext movie)
         {
-            _logger = logger;
             moviesContext = movie;
         }
 
@@ -44,15 +42,5 @@ namespace Mission4.Controllers
             return View("MyPodcasts");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
